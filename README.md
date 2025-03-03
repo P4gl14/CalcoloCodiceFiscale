@@ -32,40 +32,18 @@ L'applicazione è progettata per essere intuitiva e facile da usare, con un'inte
 ## Struttura del Codice
 Il progetto è organizzato in package e classi per garantire modularità e manutenibilità:
 
-### Package Principali
-1. **`it.codicefiscale`**: Contiene la classe principale dell'applicazione.
-2. **`it.codicefiscale.controller`**: Gestisce la logica dell'interfaccia grafica.
-3. **`it.codicefiscale.model`**: Contiene le classi del modello dati (es. `Persona`, `CodiceFiscale`).
-4. **`it.codicefiscale.utils`**: Include utility per il calcolo del codice fiscale (es. gestione delle lettere, calcolo del codice catastale, controllo omocodia).
 
 ### Classi Principali
-- **`MainApp`**: Classe principale che avvia l'applicazione JavaFX.
-- **`MainController`**: Gestisce l'interazione tra l'interfaccia grafica e la logica di business.
-- **`Persona`**: Modello per rappresentare i dati anagrafici dell'utente.
-- **`CodiceFiscaleCalculator`**: Classe che implementa l'algoritmo di calcolo del codice fiscale.
+- **`CodiceControllo`**: Classe per il calcolo del codice di controllo (l'ultima lettera).
+- **`CodicaFiscale`**: Classe principale per il calcolo del codice fiscale.
+- **`CodicaLuogo`**: Classe per gestire i codici del luogo di nascita estero e non.
+- **`CodiceFiscaleApplication`**: Classe principale per l'applicazione.
+- **`CodiceFiscaleController`**: Classe per la gestione degli oggetti dell'applicazione.
 
 ---
 
 ## Algoritmo di Calcolo del Codice Fiscale
-Il codice fiscale è composto da 16 caratteri alfanumerici, calcolati come segue:
-
-1. **Cognome**:
-   - Si prendono le prime tre consonanti (es. ROSSI → RSS).
-   - Se le consonanti sono insufficienti, si aggiungono vocali e, in ultima istanza, la lettera "X".
-
-2. **Nome**:
-   - Si prendono le prime tre consonanti, escludendo la seconda se ci sono quattro o più consonanti (es. MARIO → MRA).
-
-3. **Data di Nascita e Sesso**:
-   - Anno di nascita (ultime due cifre).
-   - Mese di nascita (rappresentato da una lettera, es. A = Gennaio, B = Febbraio, ecc.).
-   - Giorno di nascita (aggiungendo 40 per le donne, es. 25 → 25, 25 per una donna → 65).
-
-4. **Luogo di Nascita**:
-   - Codice catastale del comune (es. H501 per Roma).
-
-5. **Carattere di Controllo**:
-   - Un carattere calcolato in base a un algoritmo di controllo sui primi 15 caratteri.
+[Agenzia delle Entrate - Codice Fiscale](https://www.agenziaentrate.gov.it/portale/schede/istanze/richiesta-ts_cf/informazioni-codificazione-pf)
 
 ---
 
